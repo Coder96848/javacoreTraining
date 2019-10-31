@@ -1,6 +1,6 @@
 package com.example.user.javacoretraining.training;
 
-/**
+ /**
  * Набор тренингов по работе с примитивными типами java.
  * <p>
  * Задания определены в комментариях методов.
@@ -20,8 +20,7 @@ public class ElementaryTraining {
      * @return среднее значение для введенных чисел
      */
     public double averageValue(int firstValue, int secondValue) {
-        //TODO: implement it
-        return 0;
+        return (firstValue + secondValue) / 2;
     }
 
     /**
@@ -34,8 +33,12 @@ public class ElementaryTraining {
      * @return сумма новых трех чисел
      */
     public double complicatedAmount(int firstValue, int secondValue, int thirdValue) {
-        //TODO: implement it
-        return 0;
+
+        int newFirstValue = firstValue * 2;
+        int newSecondValue = secondValue - 3;
+        int newThirdValue = (int) Math.pow(thirdValue, 2);
+
+        return newFirstValue + newSecondValue + newThirdValue;
     }
 
     /**
@@ -47,8 +50,10 @@ public class ElementaryTraining {
      * @return новое значение
      */
     public int changeValue(int value) {
-        //TODO: implement it
-        return value;
+        if (value > 3)
+            return value + 10;
+        else
+            return value - 10;
     }
 
     /**
@@ -62,8 +67,23 @@ public class ElementaryTraining {
      * @return новое число
      */
     public int swapNumbers(int value) {
-        //TODO: implement it
-        return 0;
+        if (value < 10) return value;
+
+        String newValue = Integer.toString(value);
+        char[] c = newValue.toCharArray();
+
+        String result;
+        if (c.length > 5){
+            result = new String(c);
+            return Integer.parseInt(result);
+        }
+        else{
+            char temp = c[0];
+            c[0] = c[c.length - 1];
+            c[c.length - 1] = temp;
+            result = new String(c);
+            return Integer.parseInt(result);
+        }
     }
 
     /**
@@ -77,7 +97,17 @@ public class ElementaryTraining {
      * @return новое число
      */
     public int zeroEvenNumber(int value) {
-        //TODO: implement it
-        return 0;
+        if (value < 10) return value;
+
+        String stringValue = Integer.toString(value);
+        char[] c = stringValue.toCharArray();
+
+        for (int i = 0; i < c.length - 1; i++){
+            if (Integer.parseInt(String.valueOf(c[i])) % 2 == 0){
+                c[i] = '0';
+            }
+        }
+        String result = new String(c);
+        return Integer.parseInt(result);
     }
 }

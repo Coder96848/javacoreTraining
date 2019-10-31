@@ -19,7 +19,19 @@ public class ArraysTraining {
      * @return отсортированный массив
      */
     public int[] sort(int[] valuesArray) {
-        //TODO: implement it
+
+        boolean sorted = false;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 1; i < valuesArray.length; i++) {
+                if (valuesArray[i - 1] > valuesArray[i]) {
+                    int tmp = valuesArray[i - 1];
+                    valuesArray[i - 1] = valuesArray[i];
+                    valuesArray[i] = tmp;
+                    sorted = false;
+                }
+            }
+        }
         return valuesArray;
     }
 
@@ -32,8 +44,16 @@ public class ArraysTraining {
      * @return максимальное число или 0
      */
     public int maxValue(int... values) {
-        //TODO: implement it
-        return 0;
+        if (values.length == 0) return 0;
+        else{
+            int max = values[0];
+
+            for(int i = 0; i < values.length; i++){
+                if (values[i] > max) max = values[i];
+            }
+
+            return max;
+        }
     }
 
     /**
@@ -44,8 +64,15 @@ public class ArraysTraining {
      * @return входящий массив в обратном порядке
      */
     public int[] reverse(int[] array) {
-        //TODO: implement it
-        return new int[]{};
+
+        for (int i = 0; i < array.length / 2; i++)
+        {
+            int tmp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = tmp;
+        }
+
+        return array;
     }
 
     /**
@@ -59,8 +86,17 @@ public class ArraysTraining {
      * @return массив из чисел Фибоначчи
      */
     public int[] fibonacciNumbers(int numbersCount) {
-        //TODO: implement it
-        return new int[]{};
+        if (numbersCount < 1) return new int[]{};
+
+        int[] fib = new int[numbersCount];
+        fib[0] = 1;
+        fib[1] = 2;
+
+        for(int i = 1; i < fib.length - 1; i++){
+            fib[i+1] = fib[i-1] + fib[i];
+        }
+
+        return fib;
     }
 
     /**
@@ -72,7 +108,18 @@ public class ArraysTraining {
      * элементов
      */
     public int maxCountSymbol(int[] array) {
-        //TODO: implement it
-        return 0;
+        int maxCount = 0;
+        int count = 0;
+        for(int i = 0; i < array.length; i++){
+            for(int j = 0; j < array.length; j++) {
+                if(array[i] == array[j]){
+                    count++;
+                }
+            }
+            if(count > maxCount) maxCount = count;
+            count = 0;
+        }
+
+        return maxCount;
     }
 }
